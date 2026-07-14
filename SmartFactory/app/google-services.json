@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1087001928220",
+    "project_id": "smartfactory-8dbd8",
+    "storage_bucket": "smartfactory-8dbd8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087001928220:android:c892f811aeb5b806c635d9",
+        "android_client_info": {
+          "package_name": "com.example.smartfactory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMqFfoTPH_dOYCkkF_wy1qg5BWnEUFWGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

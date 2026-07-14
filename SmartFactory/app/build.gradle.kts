@@ -60,4 +60,20 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+
+    //Navigation dependencies
+    implementation("androidx.navigation:navigation-compose:2.9.0")
+
+    //QR Scanner dependencies
+    implementation("androidx.camera:camera-camera2:1.4.2")
+    implementation("androidx.camera:camera-lifecycle:1.4.2")
+    implementation("androidx.camera:camera-view:1.4.2")
+    implementation("com.google.mlkit:barcode-scanning:17.3.0")
+
+    //Retrofit dependencies for AI
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+    implementation("com.google.accompanist:accompanist-permissions:0.34.0")
 }
+

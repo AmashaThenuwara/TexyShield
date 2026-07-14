@@ -8,18 +8,21 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.smartfactory.firebase.FirebaseAuthManager
 
+/**
+ * LoginScreen displays the authentication form.
+ * @param onLoginSuccess Function to call when authentication passes,
+ *                       allowing the main app to switch screens.
+ */
 @Composable
 fun LoginScreen(
-    // Called after a successful login so MainActivity can navigate to the dashboard
     onLoginSuccess: () -> Unit
 ) {
+    // Input field states
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    // Error message shown under the login button if credentials are wrong
+    // UI Feedback states
     var errorMessage by remember { mutableStateOf<String?>(null) }
-
-    // Prevents the user from pressing Login twice while a request is in flight
     var isLoading by remember { mutableStateOf(false) }
 
     Column(
@@ -34,8 +37,9 @@ fun LoginScreen(
             style = MaterialTheme.typography.headlineMedium
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
+        // Email Input Field
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
@@ -46,6 +50,7 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(15.dp))
 
+        // Password Input Field (masks text automatically)
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -57,28 +62,31 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        // Login Button
         Button(
             onClick = {
-                // Clear previous error and mark loading
+                // 1. Reset UI to loading state
                 errorMessage = null
                 isLoading = true
 
+                // 2. Call our Firebase Auth Manager
                 FirebaseAuthManager.login(
-                    email.trim(),
-                    password,
+                    email = email.trim(),
+                    password = password,
                     onSuccess = {
                         isLoading = false
-                        onLoginSuccess()   // ← Navigate to dashboard
+                        onLoginSuccess()   // Triggers navigation to Dashboard
                     },
                     onFailure = { message ->
                         isLoading = false
-                        errorMessage = message
+                        errorMessage = message // Displays error to user
                     }
                 )
             },
-            enabled = !isLoading,
+            enabled = !isLoading, // Disable button while loading
             modifier = Modifier.fillMaxWidth()
         ) {
+            // Show a loading spinner if processing, otherwise show text
             if (isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier.size(20.dp),
@@ -90,13 +98,13 @@ fun LoginScreen(
             }
         }
 
-        // Show error message if login failed
+        // Display error message at the bottom if authentication fails
         if (errorMessage != null) {
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = errorMessage!!,
                 color = MaterialTheme.colorScheme.error,
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.bodyMedium
             )
         }
     }

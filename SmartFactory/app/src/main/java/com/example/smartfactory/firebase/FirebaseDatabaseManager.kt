@@ -3,10 +3,15 @@ package com.example.smartfactory.firebase
 import com.example.smartfactory.model.SensorData
 import com.google.firebase.database.*
 
+/**
+ * FirebaseDatabaseManager handles all Realtime Database interactions.
+ * It is responsible for establishing a connection to the correct region
+ * and safely converting Firebase data into our Kotlin models.
+ */
 object FirebaseDatabaseManager {
 
-    // Explicitly pass the asia-southeast1 regional URL.
-    // Without this, Firebase SDK defaults to us-central1 and cannot find the database.
+    // 1. Establish connection to our specific regional database (asia-southeast1)
+    // 2. Point directly to the "SensorData" folder/node in the database
     private val database =
         FirebaseDatabase.getInstance(
             "https://smartfactory-8dbd8-default-rtdb.asia-southeast1.firebasedatabase.app"
@@ -14,24 +19,33 @@ object FirebaseDatabaseManager {
             .reference
             .child("SensorData")
 
-    // Keeps a reference to the active listener so we can remove it later if needed
+    // Keeps track of our active real-time listener so we can cleanly remove it later
     private var activeListener: ValueEventListener? = null
 
-    // Attaches a real-time listener that fires every time Firebase data changes.
-    // Replaces any previous listener to avoid duplicates.
+    /**
+     * Attaches a real-time listener to the "SensorData" node.
+     * This function fires immediately with current data, and then
+     * fires again EVERY TIME the ESP32 pushes new data.
+     *
+     * @param onDataChanged Callback providing the latest SensorData object
+     * @param onError Callback providing an error message if something fails
+     */
     fun listenToSensorData(
         onDataChanged: (SensorData) -> Unit,
         onError: (String) -> Unit = {}
     ) {
-        // Remove existing listener before attaching a new one
-        activeListener?.let { database.removeEventListener(it) }
+        // Prevent duplicate listeners by removing any existing one first
+        stopListening()
 
         val listener = object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
-                    // Safe manual mapping to handle both Long and Double from Firebase
+                    // We manually map the data instead of using automatic conversion.
+                    // This prevents the app from crashing if Firebase sends a whole
+                    // number (Long) but our app expects a decimal (Double).
                     val map = snapshot.value as? Map<*, *>
+                    
                     if (map != null) {
                         val sensor = SensorData(
                             temperature = (map["temperature"] as? Number)?.toDouble() ?: 0.0,
@@ -43,34 +57,32 @@ object FirebaseDatabaseManager {
                         )
                         onDataChanged(sensor)
                     } else {
-                        // Data doesn't exist or isn't a map
-                        onError("Waiting for sensor data...")
+                        // The database folder is empty or doesn't exist yet
+                        onError("Waiting for ESP32 sensor data...")
                     }
                 } catch (e: Exception) {
-                    onError("Data conversion error: ${e.message}")
+                    // Catch any unexpected conversion errors gracefully
+                    onError("Data format error: ${e.message}")
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
+                // Triggered if Firebase denies read access (e.g., Security Rules)
                 onError(error.message)
             }
         }
 
+        // Attach the listener to Firebase
         database.addValueEventListener(listener)
         activeListener = listener
     }
 
-    // Call this when the screen leaves composition to stop receiving updates
+    /**
+     * Stops listening for updates.
+     * Crucial to call this when the dashboard closes to save battery and data!
+     */
     fun stopListening() {
         activeListener?.let { database.removeEventListener(it) }
         activeListener = null
     }
 }
-
-// ────── How this works ──────
-// Firebase.getInstance(url)    → connects to the correct regional database
-// .child("SensorData")         → points to the /SensorData node in your JSON tree
-// addValueEventListener(...)   → fires IMMEDIATELY with current data, then fires
-//                                again every time ESP32 writes a new value
-// onDataChange(snapshot)       → called on the MAIN thread by the Firebase SDK,
-//                                so it's safe to update Compose state directly

@@ -1,3 +1,7 @@
+"""
+File: overheating.py
+Includes functionality for the Smart Factory backend.
+"""
 import joblib
 import numpy as np
 import os

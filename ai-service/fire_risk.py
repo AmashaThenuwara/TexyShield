@@ -1,3 +1,7 @@
+"""
+File: fire_risk.py
+Includes functionality for the Smart Factory backend.
+"""
 import joblib
 import os
 

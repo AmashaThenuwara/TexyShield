@@ -1,3 +1,7 @@
+/*
+ * File: SensorData.kt
+ * Includes UI components and functionality for the Smart Factory Android app.
+ */
 package com.example.smartfactory.model
 
 // All fields use Double so Firebase JSON numbers (integer or decimal)

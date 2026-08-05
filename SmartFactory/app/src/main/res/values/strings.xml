@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">SmartFactory</string>
+    <string name="app_name">TexyShield</string>
+    <string name="app_tagline">Industry 4.0 Safety &amp; Monitoring</string>
 </resources>

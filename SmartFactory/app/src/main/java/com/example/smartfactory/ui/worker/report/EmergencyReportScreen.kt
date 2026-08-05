@@ -1,13 +1,30 @@
+/*
+ * File: EmergencyReportScreen.kt
+ * Includes UI components and functionality for the Smart Factory Android app.
+ */
 package com.example.smartfactory.ui.worker.report
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.smartfactory.ui.theme.DeepDarkBg
+import com.example.smartfactory.ui.theme.SurfaceDark
+import com.example.smartfactory.ui.theme.BorderDark
+import com.example.smartfactory.ui.theme.TealMint
+import com.example.smartfactory.ui.theme.MutedText
 import com.example.smartfactory.firebase.EmergencyReportManager
 import com.example.smartfactory.firebase.FirebaseAuthManager
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -19,30 +36,51 @@ fun EmergencyReportScreen(
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var showDropdown by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
 
     val reportTypes = listOf(
-        "🔥 Fire",
-        "🤕 Injury",
-        "⚡ Electrical Fault",
-        "🛢 Gas Leak",
-        "🏭 Machine Failure",
-        "🚑 Medical Emergency"
+        "Fabric Storage Fire",
+        "Needle Injury",
+        "Electrical Fault",
+        "Fabric Dust Accumulation",
+        "Sewing Machine Failure",
+        "Thread/Fabric Shortage",
+        "Medical Emergency"
     )
 
-    Column(
+    val backgroundGradient = Brush.verticalGradient(
+        colors = listOf(DeepDarkBg, Color(0xFF0C1014))
+    )
+
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(20.dp)
+            .background(backgroundGradient)
     ) {
-        Text(
-            text = "🚨 Emergency Report",
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.error
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Default.Warning,
+                    contentDescription = "Warning",
+                    tint = Color(0xFFFF1744),
+                    modifier = Modifier.size(28.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = "Emergency Report",
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
+                    color = Color(0xFFFF1744)
+                )
+            }
 
-        Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
-        Text("Report Type")
+            Text("Report Type", color = TealMint, fontWeight = FontWeight.SemiBold)
+            Spacer(modifier = Modifier.height(8.dp))
         ExposedDropdownMenuBox(
             expanded = showDropdown,
             onExpandedChange = { showDropdown = it }
@@ -52,7 +90,13 @@ fun EmergencyReportScreen(
                 onValueChange = {},
                 readOnly = true,
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = showDropdown) },
-                modifier = Modifier.menuAnchor().fillMaxWidth()
+                modifier = Modifier.menuAnchor().fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
+                    focusedBorderColor = TealMint,
+                    unfocusedBorderColor = MutedText
+                )
             )
             ExposedDropdownMenu(
                 expanded = showDropdown,
@@ -70,19 +114,26 @@ fun EmergencyReportScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
-        Text("Description")
+        Text("Description", color = TealMint, fontWeight = FontWeight.SemiBold)
+        Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
             value = description,
             onValueChange = { description = it },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(150.dp),
-            placeholder = { Text("Describe the emergency details here...") }
+            placeholder = { Text("Describe the emergency details here...", color = Color.Gray) },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White,
+                focusedBorderColor = TealMint,
+                unfocusedBorderColor = MutedText
+            )
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
         Button(
             onClick = {
@@ -101,8 +152,21 @@ fun EmergencyReportScreen(
                     type = selectedType,
                     description = description,
                     onSuccess = {
-                        isLoading = false
-                        onNavigateBack() // Go back to dashboard on success
+                        coroutineScope.launch {
+                            try {
+                                val reportData = com.example.smartfactory.api.ReportData(
+                                    worker_id = user.uid,
+                                    issue = selectedType,
+                                    location = "Factory Floor",
+                                    timestamp = System.currentTimeMillis().toString()
+                                )
+                                com.example.smartfactory.api.RetrofitClient.blockchainApi.mineBlock(reportData)
+                            } catch (e: Exception) {
+                                // Just log or ignore for now if blockchain fails
+                            }
+                            isLoading = false
+                            onNavigateBack() // Go back to dashboard on success
+                        }
                     },
                     onFailure = {
                         isLoading = false
@@ -123,13 +187,14 @@ fun EmergencyReportScreen(
 
         if (errorMessage != null) {
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = errorMessage!!, color = MaterialTheme.colorScheme.error)
+            Text(text = errorMessage!!, color = Color(0xFFFF1744))
         }
         
         Spacer(modifier = Modifier.height(20.dp))
         
         TextButton(onClick = onNavigateBack, modifier = Modifier.fillMaxWidth()) {
-            Text("Cancel")
+            Text("Cancel", color = TealMint)
         }
     }
+}
 }

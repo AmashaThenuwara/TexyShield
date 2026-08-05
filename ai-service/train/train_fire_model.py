@@ -1,3 +1,7 @@
+"""
+File: train_fire_model.py
+Includes functionality for the Smart Factory backend.
+"""
 from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
 import joblib

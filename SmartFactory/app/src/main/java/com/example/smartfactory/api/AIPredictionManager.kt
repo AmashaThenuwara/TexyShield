@@ -1,3 +1,7 @@
+/*
+ * File: AIPredictionManager.kt
+ * Includes UI components and functionality for the Smart Factory Android app.
+ */
 package com.example.smartfactory.ai
 
 
@@ -61,16 +65,18 @@ object AIPredictionManager {
         }
     }
 
-    suspend fun checkPredictiveMaintenance(
-        temperature: Double,
-        current: Double,
-        vibration: Double,
-        workingHours: Double
-    ): com.example.smartfactory.model.MaintenancePrediction? {
+    suspend fun checkMachineHealth(
+        air_temperature: Double,
+        process_temperature: Double,
+        rotational_speed: Double,
+        torque: Double,
+        tool_wear: Double,
+        product_type: String = "M"
+    ): com.example.smartfactory.model.MachineHealthPrediction? {
         return try {
-            RetrofitClient.api.getPredictiveMaintenance(
-                com.example.smartfactory.model.MaintenanceRequest(
-                    temperature, current, vibration, workingHours
+            RetrofitClient.api.getMachineHealth(
+                com.example.smartfactory.model.MachineHealthRequest(
+                    air_temperature, process_temperature, rotational_speed, torque, tool_wear, product_type
                 )
             )
         } catch (e: Exception) {

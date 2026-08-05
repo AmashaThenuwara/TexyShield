@@ -1,0 +1,229 @@
+{
+  "2-needle lockstitch": {
+    "display_name": "2-Needle Lockstitch",
+    "typical_models": "Juki LH-3528A-7, Juki LH-1182-5",
+    "safety_warnings": [
+      "Keep BOTH hands clear — two needles are active simultaneously",
+      "Never attempt to remove jammed fabric while powered on",
+      "Ensure BOTH needle guards are fitted before starting",
+      "Check thread tension on both needle paths before each shift"
+    ],
+    "usage_steps": [
+      "Thread both needle paths following the dual-path guide on the machine head",
+      "Lower the presser foot completely before starting",
+      "Run a test stitch on scrap fabric to verify both needle tensions are equal",
+      "Use the knee lever to lift the foot between seams"
+    ],
+    "hazards": ["Moving dual needles", "Pinch points near bobbin area", "Thread tangling risk"]
+  },
+  "Automatic CNC pattern machines": {
+    "display_name": "Automatic CNC Pattern Machine",
+    "typical_models": "Juki AMS-251",
+    "safety_warnings": [
+      "STAND CLEAR of the clamping frame during automated cycles — it moves automatically",
+      "Never reach into the work area while the machine is running a programme",
+      "Ensure the fabric clamp is fully locked before pressing the start button",
+      "Only trained operators should modify stitch programmes"
+    ],
+    "usage_steps": [
+      "Load the correct programme for the pattern being sewn",
+      "Place fabric flat within the clamp area and lock the clamp",
+      "Confirm the thread is seated correctly in all tension guides",
+      "Press the start button and step back until the cycle completes"
+    ],
+    "hazards": ["Automated moving frame", "High-speed needle", "Pinch hazard on clamp"]
+  },
+  "Bartack machine": {
+    "display_name": "Bartack Machine",
+    "typical_models": "Brother KE-430, Juki LK-1900",
+    "safety_warnings": [
+      "Keep fingers away from the clamp foot — it descends automatically",
+      "Do not hold fabric tightly during the automated bartack cycle",
+      "Ensure the knife is lowered safely before cleaning thread debris"
+    ],
+    "usage_steps": [
+      "Position the reinforcement area (belt loop, pocket corner) under the clamp",
+      "Press the foot pedal to lower the clamp and start the cycle",
+      "Wait for the full automated stitch cycle to finish before repositioning",
+      "Remove finished piece after the clamp lifts"
+    ],
+    "hazards": ["Auto-descending clamp foot", "High-speed needle burst", "Thread tangle"]
+  },
+  "Blind stitch": {
+    "display_name": "Blind Stitch Machine",
+    "typical_models": "Juki SL718-2, Yamato CM-352, Brother JC-9330, Jack JK-T641-2A",
+    "safety_warnings": [
+      "The curved needle is unique — standard needle guards do not cover it fully",
+      "Never run your finger under the fabric guide while the machine is powered on",
+      "Thread only using the correct curved-needle threading path"
+    ],
+    "usage_steps": [
+      "Fold the fabric hem to the required depth and use the fabric guide to hold it",
+      "Feed the folded hem under the curved needle slowly and evenly",
+      "Operate at medium speed — the curved needle is more fragile than straight needles",
+      "Check the blind stitch on the outer face after every seam"
+    ],
+    "hazards": ["Curved needle breakage risk", "Stitch visibility check needed", "Pinch on fabric guide"]
+  },
+  "Button-sewing machine": {
+    "display_name": "Button-Sewing Machine",
+    "typical_models": "Juki MB Series",
+    "safety_warnings": [
+      "Buttons can eject at high speed if misaligned in the clamp — wear eye protection",
+      "Never place fingers near the button holder while the foot pedal is engaged",
+      "Check that the button is fully seated in the clamp before starting"
+    ],
+    "usage_steps": [
+      "Set the stitch count and width to match the button hole pattern",
+      "Place the button in the button holder clamp securely",
+      "Position the fabric under the presser foot and lower it",
+      "Press the foot pedal to run the automated button-attachment cycle"
+    ],
+    "hazards": ["Button ejection risk", "Auto-descending clamp", "High-cycle needle movement"]
+  },
+  "Buttonhole machine": {
+    "display_name": "Buttonhole Machine",
+    "typical_models": "Juki LBH-1790 Series",
+    "safety_warnings": [
+      "The built-in knife cuts the buttonhole automatically — never reach in during operation",
+      "The clamping foot moves automatically — keep fingers on the fabric edges only",
+      "Confirm buttonhole size is set correctly before running — mismatch can damage fabric"
+    ],
+    "usage_steps": [
+      "Set the buttonhole length using the size adjustment dial",
+      "Place the garment area flat under the clamp",
+      "Press the foot pedal — the machine will stitch and cut automatically",
+      "Check the finished buttonhole for clean edges before moving on"
+    ],
+    "hazards": ["Automatic cutting knife", "Auto-clamping foot", "Fast automated cycle"]
+  },
+  "Cutter": {
+    "display_name": "Fabric Cutting Machine",
+    "typical_models": "Eastman Straight Knife, KM RS-100, Gerber/Lectra CNC Cutter",
+    "safety_warnings": [
+      "ALWAYS wear cut-resistant gloves when operating a straight or round knife cutter",
+      "Never cut toward your body — always cut away",
+      "Keep the blade guard in position when not actively cutting",
+      "For CNC cutters: stay clear of the cutting head movement zone during operation"
+    ],
+    "usage_steps": [
+      "Lay the fabric stack flat and smooth, ensuring no folds or wrinkles",
+      "Place the paper pattern or marker sheet on top",
+      "For straight knife: guide the machine slowly along pattern lines with steady pressure",
+      "For CNC cutter: load the marker file and confirm the vacuum table is active before starting"
+    ],
+    "hazards": ["Sharp blade", "Pinch risk on power drive", "Fabric stack shift"]
+  },
+  "Feed-off-the-arm": {
+    "display_name": "Feed-off-the-Arm Machine",
+    "typical_models": "Union Special 39500 Series",
+    "safety_warnings": [
+      "The cylindrical arm is at table height — watch for leg/knee contact",
+      "Multiple thread paths increase tangle risk — check all cones before starting",
+      "Never pull tubular garments off the arm while the machine is running"
+    ],
+    "usage_steps": [
+      "Thread the machine following the multi-thread path diagram on the machine body",
+      "Slide the tubular garment section onto the cylindrical arm",
+      "Align the seam edges and lower the presser foot",
+      "Operate at medium speed and guide the garment off the arm end evenly"
+    ],
+    "hazards": ["Chain-stitch unravelling if last stitch not secured", "Arm height pinch", "Thread tangle"]
+  },
+  "Flatlock Coverstitch": {
+    "display_name": "Flatlock / Coverstitch Machine",
+    "typical_models": "Juki MF-7524, Yamato VG2700-8F, Pegasus FS713P-G0, Pegasus W562-01CB",
+    "safety_warnings": [
+      "Multiple needles — keep ALL fingers away from the needle bar area",
+      "The cutting blade for the cylinder-bed variant is active — guard must be in place",
+      "Ensure the cover plate is closed before running — the looper mechanism moves at high speed"
+    ],
+    "usage_steps": [
+      "Thread all needle cones and looper following the colour-coded path guide",
+      "For cylinder-bed: slide the sleeve or cuff onto the arm before positioning under needles",
+      "Run a test stitch on scrap knit fabric to verify even tension across all needles",
+      "Guide fabric at consistent speed — uneven feeding causes skipped stitches on knitwear"
+    ],
+    "hazards": ["Multi-needle bar", "High-speed looper", "Active cutting blade on cutter models"]
+  },
+  "Multi-needle chain stitch": {
+    "display_name": "Multi-Needle Chain Stitch Machine",
+    "typical_models": "Kansai Special DFB Series, Siruba VC008",
+    "safety_warnings": [
+      "Never touch ANY of the needles while the machine is powered — they act together",
+      "The puller mechanism behind the needles is a pinch point — keep fabric edges only",
+      "Chain-stitch seams can unravel from the last stitch — always secure chain ends"
+    ],
+    "usage_steps": [
+      "Thread each needle individually, matching thread colour to the cone holder position",
+      "Feed the elastic or fabric edge under all needles at the same time",
+      "Engage the puller to assist even feeding at the correct rate",
+      "After finishing, pull sufficient chain off the back and knot or secure it before cutting"
+    ],
+    "hazards": ["Multi-needle bar across full width", "Pinch on puller rollers", "Chain-stitch unravel risk"]
+  },
+  "Overlock Serger": {
+    "display_name": "Overlock / Serger Machine",
+    "typical_models": "Juki MO-6914S, Juki MO-6900S, Yamato CZ6020, Siruba SR747D, Pegasus E32-420",
+    "safety_warnings": [
+      "The trimming knife is active at all times — NEVER slide fingers along the left fabric edge",
+      "Do not reach into the looper cover area while powered on",
+      "Multiple thread cones can unwind and tangle — check all cones are seated before starting"
+    ],
+    "usage_steps": [
+      "Thread the machine following the numbered path guide (loopers first, then needles)",
+      "Place the fabric edge against the right-hand guide plate",
+      "Lower the presser foot and begin feeding — the knife will trim automatically",
+      "Run a chain-off stitch on scrap after each seam to avoid thread pullback"
+    ],
+    "hazards": ["Active trimming knife on left edge", "High-speed looper chain", "Thread tangle from multiple cones"]
+  },
+  "Single-needle lockstitch": {
+    "display_name": "Single-Needle Lockstitch Machine",
+    "typical_models": "Juki DDL-8700, Juki DDL-5550N-7, Brother DB2-B755, Singer ZOJE-ZJ8500G",
+    "safety_warnings": [
+      "Always keep your fingers at least 5 cm from the needle while the machine is running",
+      "Ensure the needle guard/finger guard is fitted before each shift",
+      "Never attempt to remove fabric by pulling — always stop the machine first"
+    ],
+    "usage_steps": [
+      "Power on using the side switch and allow the servo motor to initialise",
+      "Load the bobbin and thread the upper path following the numbered guides",
+      "Lower the presser foot using the knee lever before starting to sew",
+      "Operate the speed foot pedal gently for precision seams"
+    ],
+    "hazards": ["Moving needle", "Bobbin area pinch", "Thread break under tension"]
+  },
+  "Waistband PMD machines": {
+    "display_name": "Waistband / PMD Machine",
+    "typical_models": "Kansai Special PMD / PXP Series",
+    "safety_warnings": [
+      "The folder attachment moves automatically — do not hold fabric tightly through the folder",
+      "Multiple needles require ALL needle guards to be in place",
+      "Waistband feeding requires consistent tension — sudden jerks can break needles"
+    ],
+    "usage_steps": [
+      "Set the folder attachment to the correct waistband width",
+      "Feed the waistband fabric into the folder and align with the front guide",
+      "Attach the waistband start to the trouser/skirt and lower the presser foot",
+      "Guide at a consistent speed — the folder will curl and feed the waistband automatically"
+    ],
+    "hazards": ["Multi-needle", "Folder attachment pinch", "High-precision alignment required"]
+  },
+  "Zigzag stitching": {
+    "display_name": "Zigzag Stitch Machine",
+    "typical_models": "Juki LZ-2290A-SR-7, Juki LZ-2284A-7, Juki LZ-2287A",
+    "safety_warnings": [
+      "The needle swings left and right — keep fingers further from the needle than on a standard lockstitch",
+      "Use only the correct wider throat plate designed for zigzag — a standard plate will cause needle breakage",
+      "Check stitch width setting before starting — wrong width causes needle strike on the foot"
+    ],
+    "usage_steps": [
+      "Set the stitch width and length using the dials on the machine body",
+      "Use the correct zigzag presser foot (wider opening than standard)",
+      "Test stitch on scrap fabric to confirm the needle clears both sides of the foot opening",
+      "Feed fabric at an even speed — zigzag stitching is more sensitive to speed variation"
+    ],
+    "hazards": ["Sideways needle swing", "Needle strike risk if wrong foot used", "Throat plate mismatch"]
+  }
+}

@@ -1,3 +1,7 @@
+/*
+ * File: Type.kt
+ * Includes UI components and functionality for the Smart Factory Android app.
+ */
 package com.example.smartfactory.ui.theme
 
 import androidx.compose.material3.Typography

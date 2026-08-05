@@ -1,3 +1,7 @@
+/*
+ * File: MainActivity.kt
+ * Includes UI components and functionality for the Smart Factory Android app.
+ */
 package com.example.smartfactory
 
 import android.os.Bundle

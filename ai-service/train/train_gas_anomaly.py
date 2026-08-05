@@ -1,3 +1,7 @@
+"""
+File: train_gas_anomaly.py
+Includes functionality for the Smart Factory backend.
+"""
 import numpy as np
 import joblib
 import os

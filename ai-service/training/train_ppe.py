@@ -1,3 +1,7 @@
+"""
+File: train_ppe.py
+Includes functionality for the Smart Factory backend.
+"""
 from ultralytics import YOLO
 
 model = YOLO("yolov8n.pt")

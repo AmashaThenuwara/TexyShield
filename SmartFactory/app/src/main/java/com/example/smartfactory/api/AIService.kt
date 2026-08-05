@@ -1,3 +1,7 @@
+/*
+ * File: AIService.kt
+ * Includes UI components and functionality for the Smart Factory Android app.
+ */
 package com.example.smartfactory.api
 
 
@@ -26,10 +30,10 @@ interface AIService {
         @Body request: com.example.smartfactory.model.CurrentRequest
     ): com.example.smartfactory.model.CurrentPrediction
 
-    @POST("predictive-maintenance")
-    suspend fun getPredictiveMaintenance(
-        @Body request: com.example.smartfactory.model.MaintenanceRequest
-    ): com.example.smartfactory.model.MaintenancePrediction
+    @POST("machine-health")
+    suspend fun getMachineHealth(
+        @Body request: com.example.smartfactory.model.MachineHealthRequest
+    ): com.example.smartfactory.model.MachineHealthPrediction
 
     @POST("ppe-detection")
     suspend fun detectPPE(
@@ -40,4 +44,11 @@ interface AIService {
     suspend fun detectWorkerHealth(
         @Body request: com.example.smartfactory.model.HealthRequest
     ): com.example.smartfactory.model.HealthPrediction
+
+    // Machine Type Visual Detection
+    // Sends a base64 image to the AI backend and returns the detected machine type
+    @POST("machine-type-detection")
+    suspend fun detectMachineType(
+        @Body request: com.example.smartfactory.model.MachineTypeRequest
+    ): com.example.smartfactory.model.MachineTypeResult
 }

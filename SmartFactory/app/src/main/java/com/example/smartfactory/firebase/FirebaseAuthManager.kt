@@ -1,3 +1,7 @@
+/*
+ * File: FirebaseAuthManager.kt
+ * Includes UI components and functionality for the Smart Factory Android app.
+ */
 package com.example.smartfactory.firebase
 
 import com.google.firebase.auth.FirebaseAuth

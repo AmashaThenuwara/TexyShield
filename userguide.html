@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TexyShield - User Manual</title>
+    <link rel="icon" type="image/jpeg" href="SmartFactory/app/src/main/res/drawable/ic_launcher_custom.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        .header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            flex: 0 0 250px;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .nav-menu {
+            list-style: none;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--bg-color);
+            font-size: 1.75rem;
+        }
+
+        .feature-card {
+            background: var(--secondary);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+        
+        ol.steps {
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        ol.steps li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: static;
+                width: 100%;
+            }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>TexyShield User Manual</h1>
+        <p>Your intelligent assistant for maintaining a safe and efficient factory environment.</p>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#getting-started" class="nav-link active">Getting Started</a></li>
+                <li class="nav-item"><a href="#admin-guide" class="nav-link">Administrator Guide</a></li>
+                <li class="nav-item"><a href="#worker-guide" class="nav-link">Factory Worker Guide</a></li>
+                <li class="nav-item"><a href="#ppe-clearance" class="nav-link">Automated PPE Clearance</a></li>
+                <li class="nav-item"><a href="#how-to-run" class="nav-link">How to Run This App</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <!-- Getting Started Section -->
+            <section id="getting-started" class="section">
+                <h2>Getting Started</h2>
+                <p>When you open the application, you will be greeted by a welcome screen.</p>
+                <br>
+                <div class="feature-card">
+                    <h3>Existing Users</h3>
+                    <p>Tap <strong>Login</strong> and enter your registered email and password to access your dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>New Users</h3>
+                    <p>Tap <strong>Register</strong> to create your account. You will need to provide your full name, email, a secure password, and select your designated role (Worker or Administrator).</p>
+                </div>
+            </section>
+
+            <!-- Administrator Guide Section -->
+            <section id="admin-guide" class="section">
+                <h2>Administrator Guide</h2>
+                <p>If you are logged in as an Administrator, your dashboard serves as a central command hub for monitoring factory health and safety.</p>
+                <br>
+                <div class="feature-card">
+                    <h3>Factory Overview & Controls</h3>
+                    <p>Your dashboard displays summary cards giving you an instant glance at the factory's operational health. You can also monitor and toggle sewing floor device controls directly from this screen.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Attendance & Security</h3>
+                    <p>Tap <strong>Attendance</strong> to monitor the live camera feed at the factory entrance and view secure, blockchain-verified attendance records. Tap "Refresh" to fetch the latest data.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Safety Ledger</h3>
+                    <p>Access the <strong>Safety Ledger</strong> to review a highly secure, immutable list of past safety events and their verification statuses.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Emergency Response</h3>
+                    <p>If an incident occurs, you will receive emergency alerts in your notifications. Open the alert to review the details, dispatch necessary assistance, and mark the situation as "Resolved" once it has been handled.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>PPE Verification</h3>
+                    <p>Open the <strong>PPE Check</strong> module to monitor the automated safety equipment checks happening at the factory entrances.</p>
+                </div>
+            </section>
+
+            <!-- Factory Worker Guide Section -->
+            <section id="worker-guide" class="section">
+                <h2>Factory Worker Guide</h2>
+                <p>If you are logged in as a Worker, your dashboard is streamlined to focus on your daily tasks, equipment maintenance, and personal safety.</p>
+                <br>
+                <div class="feature-card">
+                    <h3>Daily Tasks & Profile</h3>
+                    <p>Check your dashboard for today's assignments. You can tap the <strong>Profile</strong> icon in the top navigation bar at any time to review your personal details or securely log out.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Health Monitoring</h3>
+                    <p>Tap the <strong>Health Widget</strong> to view interactive graphs of your heart rate and body temperature over time. Pay close attention to this screen—if any limits are exceeded, the system will display colour-coded warnings advising you to take action.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Augmented Reality (AR) Maintenance</h3>
+                    <p>To perform a maintenance check on your equipment, tap <strong>Scan Machinery (AR)</strong>. Point your device’s camera at the machinery and follow the holographic text and arrows that appear on your screen for guided assistance.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Emergency Reporting (SOS)</h3>
+                    <p>In the event of an accident or hazard, tap the red <strong>SOS</strong> button on your dashboard. Select the type of emergency, type in any optional details, and tap <strong>Submit Alert</strong> to instantly notify the administration team.</p>
+                </div>
+            </section>
+
+            <!-- Automated PPE Clearance Section -->
+            <section id="ppe-clearance" class="section">
+                <h2>Automated PPE Clearance</h2>
+                <p>When entering the factory floor, an automated kiosk handles your safety clearance.</p>
+                
+                <ol class="steps">
+                    <li>Stand clearly in front of the entrance camera.</li>
+                    <li>The system will automatically scan you for required Personal Protective Equipment (PPE), such as masks and gloves.</li>
+                    <li>If your equipment is worn correctly, you will be granted clearance. If anything is missing, the system will display a warning telling you exactly which equipment you need to put on.</li>
+                </ol>
+            </section>
+
+            <!-- How to Run Section -->
+            <section id="how-to-run" class="section">
+                <h2>How to Run This App</h2>
+                <p>Follow these instructions to start the TexyShield AI backend services and run the Android mobile application.</p>
+                <br>
+                <div class="feature-card">
+                    <h3>1. Running the AI Service (Backend)</h3>
+                    <p>The AI service processes camera feeds for PPE detection, facial health monitoring, and anomaly detection.</p>
+                    <ol class="steps">
+                        <li>Open a terminal or command prompt and navigate to the <code>ai-service</code> directory inside the project.</li>
+                        <li>Activate the Python virtual environment:
+                            <br><code>venv\Scripts\activate</code> (Windows) or <code>source venv/bin/activate</code> (Mac/Linux).
+                        </li>
+                        <li>Run the main backend script: 
+                            <br><code>python main.py</code> (or <code>python run_backend.py</code> depending on your startup configuration).
+                        </li>
+                        <li>The AI service will start running locally and connect to the Firebase database to push updates.</li>
+                    </ol>
+                </div>
+                <div class="feature-card">
+                    <h3>2. Running the Android Application</h3>
+                    <p>The Android app is built using Kotlin and Jetpack Compose. You can run it via Android Studio.</p>
+                    <ol class="steps">
+                        <li>Open <strong>Android Studio</strong> and select <strong>Open an existing project</strong>.</li>
+                        <li>Navigate to and select the <code>SmartFactory</code> directory from this repository.</li>
+                        <li>Wait for the Gradle sync to complete successfully. The project already includes the required <code>google-services.json</code> for Firebase connection.</li>
+                        <li>Connect a physical Android device via USB (with USB Debugging enabled) or start an Android Virtual Device (Emulator).</li>
+                        <li>Click the green <strong>Run (▶)</strong> button in the Android Studio toolbar to compile and install the app on your device.</li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 TexyShield. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Simple script for active nav link highlighting based on scroll
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -276,17 +276,19 @@
                 <p>Follow these instructions to start the TexyShield AI backend services and run the Android mobile application.</p>
                 <br>
                 <div class="feature-card">
-                    <h3>1. Running the AI Service (Backend)</h3>
+                    <h3>1. Running the AI Computer Vision Pipeline</h3>
                     <p>The AI service processes camera feeds for PPE detection, facial health monitoring, and anomaly detection.</p>
                     <ol class="steps">
-                        <li>Open a terminal or command prompt and navigate to the <code>ai-service</code> directory inside the project.</li>
-                        <li>Activate the Python virtual environment:
-                            <br><code>venv\Scripts\activate</code> (Windows) or <code>source venv/bin/activate</code> (Mac/Linux).
+                        <li>Open a terminal or command prompt and navigate to the <code>ai-service</code> directory located inside your project folder:
+                            <br><code>cd path/to/project/ai-service</code>
                         </li>
-                        <li>Run the main backend script: 
-                            <br><code>python main.py</code> (or <code>python run_backend.py</code> depending on your startup configuration).
+                        <li>Run the automated backend script (which will automatically detect and update the <code>BASE_URL</code> in your Android code with your machine's local IP address):
+                            <br><code>.\venv\Scripts\python.exe run_backend.py</code> (Windows) or <code>python run_backend.py</code> (Mac/Linux).
                         </li>
-                        <li>The AI service will start running locally and connect to the Firebase database to push updates.</li>
+                        <li>Alternatively, to run the FastAPI server manually without auto-updating the IP, use:
+                            <br><code>.\venv\Scripts\uvicorn main:app --host 0.0.0.0 --port 8000</code>
+                        </li>
+                        <li><strong>Note on API URLs:</strong> Ensure your Android app's API base URL matches the server's address. If you use <code>run_backend.py</code>, it detects your IP and updates this for you (e.g., <code>http://192.168.x.x:8000/</code>). If you are testing on an Android Emulator manually without the script, you should set the URL to <code>http://10.0.2.2:8000/</code>.</li>
                     </ol>
                 </div>
                 <div class="feature-card">
